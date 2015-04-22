@@ -19,3 +19,10 @@ C:\Users\Amanpreet\Documents\GitHub\gurjotsassal\abc-bank-csharp\abc-bank-tests\
 C:\Users\Amanpreet\Documents\GitHub\gurjotsassal\abc-bank-csharp\abc-bank-tests\obj\Debug\abc-bank-tests.csprojResolveAssemblyReference.cache
 C:\Users\Amanpreet\Documents\GitHub\gurjotsassal\abc-bank-csharp\abc-bank-tests\obj\Debug\abc-bank-tests.dll
 C:\Users\Amanpreet\Documents\GitHub\gurjotsassal\abc-bank-csharp\abc-bank-tests\obj\Debug\abc-bank-tests.pdb
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\bin\Debug\abc-bank-tests.dll
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\bin\Debug\abc-bank-tests.pdb
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\bin\Debug\abc-bank.dll
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\bin\Debug\abc-bank.pdb
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\obj\Debug\abc-bank-tests.csprojResolveAssemblyReference.cache
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\obj\Debug\abc-bank-tests.dll
+C:\Users\ipark\Documents\Visual Studio 2013\Projects\abc-bank-csharp\abc-bank-tests\obj\Debug\abc-bank-tests.pdb

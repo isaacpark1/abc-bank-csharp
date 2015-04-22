@@ -1,52 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using abc_bank;
-using abc_bank.Accounts;
 
 namespace abc_bank_tests
 {
     [TestClass]
     public class CustomerTest
     {
-        [TestMethod]
-        public void TestApp()
-        {
-            //Arrange
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.Checking);
-            var savingsAccount = AccountFactory.CreateAccount(AccountType.Savings);
-
-            var henry = new Customer("Henry");
-            henry.OpenAccount(checkingAccount);
-            henry.OpenAccount(savingsAccount);
-
-            checkingAccount.Deposit(100.0);
-            savingsAccount.Deposit(4000.0);
-            savingsAccount.Withdraw(200.0);
-
-            //Act
-            var statement = henry.GetStatement();
-
-            //Assert
-            Assert.AreEqual("Statement for Henry\n" +
-                    "\n" +
-                    "Checking Account\n" +
-                    "  deposit $100.00\n" +
-                    "Total $100.00\n" +
-                    "\n" +
-                    "Savings Account\n" +
-                    "  deposit $4,000.00\n" +
-                    "  withdrawal $200.00\n" +
-                    "Total $3,800.00\n" +
-                    "\n" +
-                    "Total In All Accounts $3,900.00", statement);
-        }
-
+ 
         [TestMethod]
         public void TestOneAccount()
         {
             //Arrange
             var oscar = new Customer("Oscar");
-            oscar.OpenAccount(AccountFactory.CreateAccount(AccountType.Savings));
+            oscar.OpenAccount(new Account(AccountType.Savings));
 
             //Act
             var numberOfAccounts = oscar.GetNumberOfAccounts();
@@ -60,8 +28,8 @@ namespace abc_bank_tests
         {
             //Arrange
             var oscar = new Customer("Oscar");
-            oscar.OpenAccount(AccountFactory.CreateAccount(AccountType.Savings));
-            oscar.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
+            oscar.OpenAccount(new Account(AccountType.Savings));
+            oscar.OpenAccount(new Account(AccountType.Checking));
 
             //Act
             var numberOfAccounts = oscar.GetNumberOfAccounts();
@@ -75,9 +43,9 @@ namespace abc_bank_tests
         {
             //Arrange
             var oscar = new Customer("Oscar");
-            oscar.OpenAccount(AccountFactory.CreateAccount(AccountType.Savings));
-            oscar.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
-            oscar.OpenAccount(AccountFactory.CreateAccount(AccountType.MaxiSavings));
+            oscar.OpenAccount(new Account(AccountType.Savings));
+            oscar.OpenAccount(new Account(AccountType.Checking));
+            oscar.OpenAccount(new Account(AccountType.MaxiSavings));
 
             //Act
             var numberOfAccounts = oscar.GetNumberOfAccounts();
@@ -90,8 +58,8 @@ namespace abc_bank_tests
         public void Transfer()
         {
             //Arrange
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.Checking);
-            var savingsAccount = AccountFactory.CreateAccount(AccountType.Savings);
+            var checkingAccount = new Account(AccountType.Checking);
+            var savingsAccount = new Account(AccountType.Savings);
 
             var henry = new Customer("Henry");
             henry.OpenAccount(checkingAccount);
@@ -112,7 +80,7 @@ namespace abc_bank_tests
         public void Transfer_Should_Throw_Exception_If_Destination_AccountType_DoesNot_Exist()
         {
             //Arrange
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.Checking);
+            var checkingAccount = new Account(AccountType.Checking);
 
             var henry = new Customer("Henry");
             henry.OpenAccount(checkingAccount);
@@ -128,7 +96,7 @@ namespace abc_bank_tests
         public void Transfer_Should_Throw_Exception_If_Source_AccountType_DoesNot_Exist()
         {
             //Arrange
-            var savingAccount = AccountFactory.CreateAccount(AccountType.Savings);
+            var savingAccount = new Account(AccountType.Savings);
 
             var henry = new Customer("Henry");
             henry.OpenAccount(savingAccount);
@@ -144,8 +112,8 @@ namespace abc_bank_tests
         public void Transfer_Should_Throw_Exception_If_There_Is_Insufficient_Funds_to_Transfer()
         {
             //Arrange
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.Checking);
-            var savingsAccount = AccountFactory.CreateAccount(AccountType.Savings);
+            var checkingAccount = new Account(AccountType.Checking);
+            var savingsAccount = new Account(AccountType.Savings);
 
             var henry = new Customer("Henry");
             henry.OpenAccount(checkingAccount);

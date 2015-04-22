@@ -61,52 +61,9 @@ namespace abc_bank
             return total;
         }
 
-        public string GetStatement()
+       public List<Account> GetAccounts()
         {
-            var statement = new StringBuilder();
-            statement.Append(string.Format("Statement for {0}\n", _name));
-            var total = 0.0;
-            foreach (Account a in _accounts)
-            {
-                statement.Append(string.Format("\n{0}\n", StatementForAccount(a)));
-                total += a.SumTransactions();
-            }
-            statement.Append(string.Format("\nTotal In All Accounts {0}", ToDollars(total)));
-            return statement.ToString();
-        }
-
-        private static string StatementForAccount(Account a)
-        {
-            var s = new StringBuilder();
-
-            //Translate to pretty account type
-            switch (a.GetAccountType())
-            {
-                case AccountType.Checking:
-                    s.Append("Checking Account\n");
-                    break;
-                case AccountType.Savings:
-                    s.Append("Savings Account\n");
-                    break;
-                case AccountType.MaxiSavings:
-                    s.Append("Maxi Savings Account\n");
-                    break;
-            }
-
-            //Now total up all the transactions
-            double total = 0.0;
-            foreach (var t in a.GetTransactions())
-            {
-                s.Append(string.Format("  {0} {1}\n", (t.Amount < 0 ? "withdrawal" : "deposit"), ToDollars(t.Amount)));
-                total += t.Amount;
-            }
-            s.Append("Total " + ToDollars(total));
-            return s.ToString();
-        }
-
-        private static string ToDollars(double d)
-        {
-            return string.Format("${0:N}", Math.Abs(d));
+            return _accounts;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using abc_bank;
-using abc_bank.Accounts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace abc_bank_tests
 {
@@ -16,7 +16,7 @@ namespace abc_bank_tests
             //Arrange
             var bank = new Bank();
             var john = new Customer("John");
-            john.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
+            john.OpenAccount(new Account(AccountType.Checking));
             bank.AddCustomer(john);
 
             //Act
@@ -24,8 +24,8 @@ namespace abc_bank_tests
 
             //Assert
             Assert.AreEqual("Customer Summary\n - John (1 account)", summary);
-        }
 
+        }
         [TestMethod]
         public void CustomerSummary_WithTwoCustomers()
         {
@@ -33,12 +33,12 @@ namespace abc_bank_tests
             var bank = new Bank();
 
             var john = new Customer("John");
-            john.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
+            john.OpenAccount(new Account(AccountType.Checking));
             bank.AddCustomer(john);
 
             var jimmy = new Customer("Jimmy");
-            jimmy.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
-            jimmy.OpenAccount(AccountFactory.CreateAccount(AccountType.Savings));
+            jimmy.OpenAccount(new Account(AccountType.Checking));
+            jimmy.OpenAccount(new Account(AccountType.Savings));
             bank.AddCustomer(jimmy);
 
             //Act
@@ -65,12 +65,12 @@ namespace abc_bank_tests
             //Arrange
             var bank = new Bank();
             var john = new Customer("John");
-            john.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
+            john.OpenAccount(new Account(AccountType.Checking));
             bank.AddCustomer(john);
 
             var jimmy = new Customer("Jimmy");
-            jimmy.OpenAccount(AccountFactory.CreateAccount(AccountType.Checking));
-            jimmy.OpenAccount(AccountFactory.CreateAccount(AccountType.Savings));
+            jimmy.OpenAccount(new Account(AccountType.Checking));
+            jimmy.OpenAccount(new Account(AccountType.Savings));
             bank.AddCustomer(jimmy);
 
             //Act
@@ -85,7 +85,7 @@ namespace abc_bank_tests
         {
             //Arrange
             var bank = new Bank();
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.Checking);
+            var checkingAccount = new Account(AccountType.Checking);
             var bill = new Customer("Bill").OpenAccount(checkingAccount);
             bank.AddCustomer(bill);
 
@@ -103,7 +103,7 @@ namespace abc_bank_tests
         {
             //Arrange
             var bank = new Bank();
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.Savings);
+            var checkingAccount = new Account(AccountType.Savings);
             bank.AddCustomer(new Customer("Bill").OpenAccount(checkingAccount));
 
             checkingAccount.Deposit(1500.0);
@@ -120,7 +120,7 @@ namespace abc_bank_tests
         {
             //Arrange
             var bank = new Bank();
-            var checkingAccount = AccountFactory.CreateAccount(AccountType.MaxiSavings);
+            var checkingAccount = new Account(AccountType.MaxiSavings);
             bank.AddCustomer(new Customer("Bill").OpenAccount(checkingAccount));
 
             checkingAccount.Deposit(3000.0);

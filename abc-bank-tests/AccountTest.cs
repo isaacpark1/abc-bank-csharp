@@ -1,6 +1,6 @@
 ﻿using System;
-using abc_bank.Accounts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using abc_bank;
 
 namespace abc_bank_tests
 {
@@ -13,7 +13,7 @@ namespace abc_bank_tests
         public void Deposit()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Checking);
+            var account = new Account(AccountType.Checking);
 
             //Act
             account.Deposit(200.0);
@@ -28,7 +28,7 @@ namespace abc_bank_tests
         public void Deposit_Should_Throw_Exception_If_Amount_Is_Negative()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Checking);
+            var account = new Account(AccountType.Checking);
 
             //Act
             account.Deposit(-1);
@@ -38,7 +38,7 @@ namespace abc_bank_tests
         public void Withdraw()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Checking);
+            var account = new Account(AccountType.Checking);
 
             //Act
             account.Deposit(400.0);
@@ -53,7 +53,7 @@ namespace abc_bank_tests
         public void Withdraw_Should_Throw_Exception_If_Amount_Is_Negative()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Checking);
+            var account = new Account(AccountType.Checking);
 
             //Act
             account.Withdraw(-1);
@@ -64,7 +64,7 @@ namespace abc_bank_tests
         public void Withdraw_Should_Throw_Exception_If_There_Is_InsufficientFunds()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Checking);
+            var account = new Account(AccountType.Checking);
             account.Deposit(100);
 
             //Act
@@ -75,7 +75,7 @@ namespace abc_bank_tests
         public void InterestEarnedForCheckingAccount()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Checking);
+            var account = new Account(AccountType.Checking);
             account.Deposit(400.0);
             account.Withdraw(300.0);
 
@@ -90,7 +90,7 @@ namespace abc_bank_tests
         public void InterestEarnedForSavingsAccount()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.Savings);
+            var account = new Account(AccountType.Savings);
             account.Deposit(2000.0);
             account.Withdraw(300.0);
 
@@ -105,7 +105,7 @@ namespace abc_bank_tests
         public void InterestEarnedForMaxiSavingsAccount()
         {
             //Arrange
-            var account = AccountFactory.CreateAccount(AccountType.MaxiSavings);
+            var account = new Account(AccountType.MaxiSavings);
             account.Deposit(4000.0);
             account.Withdraw(300.0);
 
